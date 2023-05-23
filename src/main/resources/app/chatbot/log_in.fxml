@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="478.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="app.chatbot.log_in">
+    <children>
+        <AnchorPane prefHeight="494.0" prefWidth="346.0"
+                    style="-fx-background-color: #FFFFFF; -fx-border-color: #989898;">
+            <children>
+                <TextField fx:id="fieldName" layoutX="70.0" layoutY="98.0" prefHeight="27.0" prefWidth="211.0">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </TextField>
+                <Label layoutX="128.0" layoutY="63.0" text="Введите имя">
+                    <font>
+                        <Font name="Arial" size="15.0"/>
+                    </font>
+                </Label>
+                <Button fx:id="buttonStart" layoutX="70.0" layoutY="146.0" mnemonicParsing="false"
+                        onMouseClicked="#start" prefHeight="46.0" prefWidth="211.0"
+                        style="-fx-background-color: #217CE5;" text="Начать" textFill="WHITE">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Button>
+                <Label fx:id="labelExit" layoutX="155.0" layoutY="213.0" onMouseClicked="#close" text="Выход"
+                       textFill="#217ce5">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="231.0" layoutY="294.0" text="Ева">
+                    <font>
+                        <Font name="Arial Black" size="18.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="199.0" layoutY="321.0" text="Твой виртуальный" textFill="#7c7979">
+                    <font>
+                        <Font name="Arial" size="13.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="220.0" layoutY="334.0" text="помощник" textFill="#7c7979">
+                    <font>
+                        <Font name="Arial" size="13.0"/>
+                    </font>
+                </Label>
+                <ImageView fitHeight="200.0" fitWidth="171.0" layoutX="28.0" layoutY="250.0">
+                    <image>
+                        <Image url="@../image/Eva.png"/>
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
