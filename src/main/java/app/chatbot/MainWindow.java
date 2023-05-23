@@ -45,7 +45,7 @@ public class MainWindow {
 
     // Кнопка отправки смс
     @FXML
-    void send() {
+    private void send() {
         if (messageField.getText().equals("")) {
             return;
         }
@@ -81,7 +81,7 @@ public class MainWindow {
     }
 
     @FXML
-    void initialize() {
+    private void initialize() {
         eva = new ChatBot();
         eva.setBotName("Ева");
         try {
