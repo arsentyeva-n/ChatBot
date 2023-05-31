@@ -78,6 +78,7 @@ public class MainWindow {
         String botMessage = "[" + formatForDateNow.format(date) + "]" + " " + eva.getBotName() + " : " + eva.say(messageField.getText()) + "\n";
         textArea.setText(textArea.getText() + botMessage);
         messageField.setText("");
+        eva.addMessage(userMessage + botMessage); // добавление в список истории сообщения
     }
 
     @FXML
@@ -85,7 +86,7 @@ public class MainWindow {
         eva = new ChatBot();
         eva.setBotName("Ева");
         try {
-            eva.setUserName(eva.loadName());
+            eva.setUserName(eva.loadName()); // todo как имя передается из одного окна в другое сгл
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -116,6 +117,12 @@ public class MainWindow {
     private void close() { // Закрытие программы
         if (eva.isSaveFlag())                        // если пользователь указал сохранение диалога
             eva.addHistory(textArea.getText());     // текст из textArea сохраняется в файл под именем пользователя
+
+      /*  LinkedList<String> sms = new LinkedList<>(); // Список сообщений
+        sms = eva.getHistory(); // добавление в список истории сообщения
+        for(String i : sms){
+            System.out.print(i);
+        }*/
         Stage stage = (Stage) mainAnchor.getScene().getWindow();
         stage.close();
     }

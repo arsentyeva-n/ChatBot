@@ -20,9 +20,12 @@ import java.text.DateFormat;
 
 // ChatBot наследуется от Bot
 public class ChatBot extends Bot {
+    private static String filename = "users/names.txt";
 
     // Конструктор от производного класса
     public ChatBot() {      // Конструктор
+        // todo вызов конструктора родительского класса, используется для инициализации родительского класса,
+        // чтобы объекты, созданные из наследующего класса, имели доступ к полям и методам родительского класса
         super();
     }
 
@@ -36,9 +39,8 @@ public class ChatBot extends Bot {
         put("здравствуйте", "hello");
         put("хай", "hello");
         put("привет", "hello");
-        put("здорова", "hello");
-        put("здравствуй", "hello");
         // who
+        //todo Экранирование. Для обычного использования метасимволов в качестве обычных.
         put("кто\\s.*ты", "who");
         put("ты\\s.*кто", "who");
         // name
@@ -86,6 +88,7 @@ public class ChatBot extends Bot {
         put("вычисли\\s?\\d+\\s?", "math");
     }};
 
+
     // Ответы и вопросы бота
     final private Map<String, String> answersByKeys = new HashMap<String, String>() {{
         put("hello", "Здравствуйте, рада Вас видеть.");
@@ -126,22 +129,31 @@ public class ChatBot extends Bot {
     // Метод ответа бота
     @Override
     public String say(String message) {
-        /* Split("[ {,|.}?]+")) разбить строку на подстроки по определенному разделителю ( в этом случае
-        символы {},.?| встречающиеся один и более одного раза
-         * toLowerCase - опускаем все в нижний регистр для удобства работы
-         * join - соединяет строки с учетом разделителя
+        /* toLowerCase - опускаем все в нижний регистр для удобства работы
+         * Разбивает сообщение на слова с помощью метода split("[ {,|}?]+"),
+         * слова могут быть разделены любым количеством пробелов, запятых, вопросительных знаков, фигурных скобок или знаков вопроса.
+         * Объединяет слова в строку с помощью метода String.join(" ", ...),
+         * где первый параметр " " задает разделитель между словами, а второй параметр ...
+         * представляет собой список слов, полученный на предыдущем шаге.
          */
+        //todo
         String temp = String.join(" ", message.toLowerCase().split("[ {,|}?]+"));
         /* Интерфейс Map.Entry обозначает пару “ключ-значение” внутри словаря.
          * Метод entrySet() возвращает список всех пар в нашей HashMap,
-         * перебираем именно пары, а не отдельно ключи или значения
-         */
+         * перебираем именно пары, а не отдельно ключи или значения */
+
+        //todo
         for (Map.Entry<String, String> i : keys.entrySet()) {
-            /* Статический метод Pattern compile(). Принимает строковый литерал регулярного выражения.
-             * В данном случае ключ пары. */
+            /* создается объект Pattern, который компилируется из ключа i.getKey()
+             Объект Pattern используется для поиска подстроки в других строках
+             */
             pattern = Pattern.compile(i.getKey());
-            /* Содержит ли строка шаблон, используя метод matcher. Если шаблон соответствует некоторой подстроке в строке,
-             то возвращаем соответствующее значение (значение, связанное соответствующим ключом в HashMap)*/
+            /* С помощью matcher() проверяется, cодержит ли строка temp подстроку, соответствующую шаблону,
+            заданному ключом i.getKey() и вовзращает объект matcher
+            У объекта Matcher вызывается метод find(),
+            который проверяет, есть ли совпадение подстроки в строке temp.
+            Если совпадение найдено, то проверяется, равно ли значение i.getValue() строке "whattime" или "math"
+             */
             if (pattern.matcher(temp).find())           // если пользователь запросил время
                 if (i.getValue().equals("whattime")) {
                     DateFormat formatter = new SimpleDateFormat("hh:mm:ss a");
@@ -174,9 +186,9 @@ public class ChatBot extends Bot {
         }
         if (message.equals("/fileclean")) {
             FileWriter fstream1 = new FileWriter("users/" + getUserName() + ".txt");   // конструктор с одним параметром - для перезаписи
-            BufferedWriter out1 = new BufferedWriter(fstream1);                               // Класс BufferedWriter записывает текст в поток, предварительно буферизируя записываемые символы, тем самым снижая количество обращений к физическому носителю для записи данных.
-            out1.write("");                                                               // очищаем, перезаписав поверх пустую строку
-            out1.close();                                                                     // закрываем
+            BufferedWriter out1 = new BufferedWriter(fstream1);                                // Класс BufferedWriter записывает текст в поток, предварительно буферизируя записываемые символы, тем самым снижая количество обращений к физическому носителю для записи данных.
+            out1.write("");                                                                // очищаем, перезаписав поверх пустую строку
+            out1.close();                                                                      // закрываем
         }
         if (message.equals("/loaddialog")) {
             return loadHistory();
@@ -185,12 +197,12 @@ public class ChatBot extends Bot {
         return temp;
     }
 
-    /* Метод загрузки имени из файла "names.csv".
-     * Если файл "names.csv" не будет найден, то мы выбросим исключение типа FileNotFoundException.
+    /* Метод загрузки имени из файла "names.txt".
+     * Если файл "names.txt" не будет найден, то мы выбросим исключение типа FileNotFoundException.
      */
     @Override
     public String loadName() throws FileNotFoundException {
-        File file = new File("users/names.csv");    // объект типа файл
+        File file = new File(filename);    // объект типа файл
         Scanner scanner = new Scanner(file);                 // считывает данные из источника, который ты для него укажешь. (Например из строки, из файла, из консоли)
         String name = null;
         while (scanner.hasNextLine()) {                      // hasNextLine() — проверяет, является ли следующая порция данных строкой

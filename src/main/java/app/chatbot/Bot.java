@@ -7,11 +7,29 @@
 package app.chatbot;
 
 import java.io.FileNotFoundException;
+import java.util.LinkedList;
 
 public abstract class Bot {
     private String botName;     // хранит имя бота
 
     public Bot() {
+        historyList = new LinkedList<>();
+    }
+
+    // todo
+    private LinkedList<String> historyList; // Список сообщений
+
+    public LinkedList<String> getHistory() {
+        return historyList;
+    }
+
+    public void setHistory(LinkedList<String> historyList) {
+        this.historyList = historyList;
+    }
+
+    // добавление сообщения пользователя и ответа бота
+    public void addMessage(String message) {
+        historyList.add(message);
     }
 
     private String userName;    // хранит имя пользователя

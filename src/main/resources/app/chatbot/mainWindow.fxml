@@ -8,45 +8,38 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainAnchor" prefHeight="484.0" prefWidth="343.0" xmlns="http://javafx.com/javafx/19"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.chatbot.MainWindow">
+<AnchorPane fx:id="mainAnchor" prefHeight="484.0" prefWidth="343.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.chatbot.MainWindow">
     <children>
-        <AnchorPane prefHeight="484.0" prefWidth="343.0"
-                    style="-fx-background-color: #FFFFFF; -fx-border-color: #989898;">
+        <AnchorPane prefHeight="484.0" prefWidth="377.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #989898;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <TextField fx:id="messageField" layoutX="15.0" layoutY="432.0" prefHeight="42.0" prefWidth="314.0"
-                           promptText="Сообщение">
+                <TextField fx:id="messageField" layoutX="15.0" layoutY="432.0" prefHeight="42.0" prefWidth="314.0" promptText="Сообщение" AnchorPane.bottomAnchor="13.600000000000001" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.600000000000023" AnchorPane.topAnchor="431.0">
                     <font>
-                        <Font size="14.0"/>
+                        <Font size="14.0" />
                     </font>
                 </TextField>
-                <ImageView fx:id="sendMessage" fitHeight="28.0" fitWidth="28.0" layoutX="294.0" layoutY="439.0"
-                           onMouseClicked="#send" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="sendMessage" fitHeight="28.0" fitWidth="28.0" layoutX="294.0" layoutY="439.0" onMouseClicked="#send" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="293.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="439.0">
                     <image>
-                        <Image url="@../image/sent.png"/>
+                        <Image url="@../image/sent.png" />
                     </image>
                 </ImageView>
-                <TextArea fx:id="textArea" editable="false" layoutX="9.0" layoutY="36.0" prefHeight="387.0"
-                          prefWidth="323.0" wrapText="true">
+                <TextArea fx:id="textArea" editable="false" layoutX="9.0" layoutY="36.0" prefHeight="387.0" prefWidth="323.0" wrapText="true" AnchorPane.bottomAnchor="63.80000000000001" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="11.800000000000011" AnchorPane.topAnchor="37.0">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                 </TextArea>
-                <ImageView fitHeight="21.0" fitWidth="28.0" layoutX="11.0" layoutY="8.0" pickOnBounds="true"
-                           preserveRatio="true">
+                <ImageView fitHeight="21.0" fitWidth="28.0" layoutX="11.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="457.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="311.0" AnchorPane.topAnchor="8.0">
                     <image>
-                        <Image url="@../image/menu.png"/>
+                        <Image url="@../image/menu.png" />
                     </image>
                 </ImageView>
-                <Label layoutX="48.0" layoutY="8.0" text="Ева" textFill="#838282">
+                <Label layoutX="50.0" layoutY="10.0" prefHeight="23.0" prefWidth="28.0" text="Ева" textFill="#838282" AnchorPane.leftAnchor="49.0" AnchorPane.rightAnchor="267.0" AnchorPane.topAnchor="9.8">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                 </Label>
-                <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="312.0" layoutY="9.0" onMouseClicked="#close"
-                           pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="312.0" layoutY="9.0" onMouseClicked="#close" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="453.0" AnchorPane.leftAnchor="312.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="9.0">
                     <image>
-                        <Image url="@../image/close.png"/>
+                        <Image url="@../image/close.png" />
                     </image>
                 </ImageView>
             </children>

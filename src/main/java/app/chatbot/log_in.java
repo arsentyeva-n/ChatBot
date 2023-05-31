@@ -26,6 +26,7 @@ public class log_in {
 
     private static int height = 480;
 
+    private static String filename = "users/names.txt";
     @FXML
     private TextField fieldName;
 
@@ -35,9 +36,9 @@ public class log_in {
         String path = "users/";
         Files.createDirectories(Paths.get(path));
         // Проверка имени и его длины
-        if (!fieldName.getText().equals("") && fieldName.getText().length() > 3) {
+        if (!fieldName.getText().equals("") && fieldName.getText().length() > 1) {
             // Класс FileWriter является производным от класса Writer. Он используется для записи текстовых файлов.
-            FileWriter writer = new FileWriter("users/names.csv", true); // true == добавление текста в файл, если файл существует
+            FileWriter writer = new FileWriter(filename, true); // true == добавление текста в файл, если файл существует
             writer.write(fieldName.getText() + "\n");
             writer.close();
             this.close();
@@ -49,7 +50,7 @@ public class log_in {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initStyle(StageStyle.TRANSPARENT);
             alert.setTitle("Ошибка");
-            alert.setHeaderText("Длина имени должна быть больше 3-х символов");
+            alert.setHeaderText("Длина имени должна быть больше 1-го символа");
             alert.setContentText("Введите имя корректно");
             alert.showAndWait();
         }
